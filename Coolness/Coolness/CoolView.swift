@@ -26,22 +26,25 @@ struct CoolView: View {
         }
     }
     
+    private var accessoryView: some View {
+        HStack {
+            textField
+            
+            Button(action: {}, label: { Text("Add") })
+        }
+        .padding()
+        .frame(maxWidth: .infinity)
+        .frame(height: 80)
+        .background(.thickMaterial)
+    }
+    
     var body: some View {
         ZStack {
             Color.orange
                 .edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 0) {
-                HStack {
-                    textField
-                    
-                    Button(action: {}, label: { Text("Add") })
-                }
-                .padding()
-                .frame(maxWidth: .infinity)
-                .frame(height: 80)
-                .background(.white.opacity(0.5))
-            
+                accessoryView
                 CoolViewCellContainer()
             }
         }

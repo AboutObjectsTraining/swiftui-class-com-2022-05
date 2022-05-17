@@ -4,12 +4,11 @@
 import SwiftUI
 
 struct CoolViewCellContainer: View {
-//    @ObservedObject var coolViewModel: CoolViewModel
     
     var body: some View {
         ZStack {
             Rectangle()
-                .fill(.white.opacity(0.7))
+                .fill(.regularMaterial)
                 .edgesIgnoringSafeArea(.bottom)
             CoolViewCells()
         }
@@ -33,13 +32,33 @@ struct CoolViewCells: View {
     }
 }
 
+func +(lhs: CGSize, rhs: CGSize) -> CGSize {
+    CGSize(width: lhs.width + rhs.width, height: lhs.height + rhs.height)
+}
+
 struct CoolViewCell: View {
     let cellModel: CellModel
     
+    @GestureState private var offsetAmount = CGSize.zero
+    @State private var currentOffset = CGSize.zero
+    
+    private var dragGesture: some Gesture {
+        DragGesture()
+            .updating($offsetAmount) { value, state, _ in
+                state = value.translation
+            }
+            .onEnded { value in
+                currentOffset = currentOffset +  value.translation
+            }
+    }
+    
     var body: some View {
+        let offset = cellModel.offset + currentOffset + offsetAmount
+        
         Text(cellModel.text)
             .coolTextStyle(color: .white, background: cellModel.color)
-            .offset(cellModel.offset)
+            .offset(offset)
+            .gesture(dragGesture)
     }
 }
 
