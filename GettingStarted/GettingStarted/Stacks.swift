@@ -8,6 +8,7 @@ struct WeatherView: View {
         HStack(spacing: 18) {
             Image(systemName: "sunrise.fill")
             Text("6:15 AM")
+                .font(.system(size: 20))
         }
         .font(.system(size: 36))
     }
@@ -15,7 +16,7 @@ struct WeatherView: View {
 
 struct WeatherViews: View {
     var body: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 12) {
             HStack(spacing: 18) {
                 Image(systemName: "sunrise.fill")
                 Text("6:15 AM")
@@ -74,18 +75,16 @@ struct WeatherCell: View {
     
     var body: some View {
         HStack(spacing: 18) {
-            Group {
-                Image(systemName: imageName)
-                    // Multicolor system image, where applicable
-                    .renderingMode(.original)
-                    .frame(width: 32)
-                    .padding(12.0)
-                    .background(Color.blue)
-                Text(time)
-                    .fontWeight(.light)
-                    .frame(width: 120, alignment: .leading)
-                    .lineLimit(4)
-            }
+            Image(systemName: imageName)
+            // Multicolor system image, where applicable
+                .renderingMode(.original)
+                .frame(width: 32)
+                .padding(12.0)
+                .background(Color.blue)
+            Text(time)
+                .fontWeight(.light)
+                .frame(width: 120, alignment: .leading)
+                .lineLimit(4)
         }
         .font(.system(size: 20))
         .background(Color.init(white: 0.5, opacity: 0.25))
@@ -98,9 +97,5 @@ struct Stacks_Previews: PreviewProvider {
         WeatherView()
         WeatherViews()
         FancyWeatherView()
-            
-            
-            
-        
     }
 }

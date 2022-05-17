@@ -16,21 +16,21 @@ struct TapGestureView: View {
     }
 }
 
-    struct RotationGestureView: View {
+struct RotationGestureView: View {
     @State private var angle = Angle(degrees: 0)
-
-    var rotationGesture: some Gesture {
+    
+    private var rotationGesture: some Gesture {
         RotationGesture()
             .onChanged { angle = $0 }
     }
-
+    
     var body: some View {
         Color.blue
             .frame(width: 160, height: 80)
             .rotationEffect(angle)
             .gesture(rotationGesture)
     }
-    }
+}
 
 struct Gestures_Previews: PreviewProvider {
     static var previews: some View {

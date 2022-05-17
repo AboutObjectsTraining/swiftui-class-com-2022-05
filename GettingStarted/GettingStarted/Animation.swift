@@ -4,27 +4,34 @@
 import SwiftUI
 
 struct AnimateAllTheThings: View {
-    @State var isRotating = false
+    @State private var isRotating = false
     
     var body: some View {
         VStack {
             Spacer()
+            
             Text("Hello, World!")
-                .bold()
+                .fontWeight(.bold)
                 .padding()
                 .foregroundColor(.white)
+            
             // Animatable modifiers
                 .background(isRotating ? .pink : .purple)
                 .opacity(isRotating ? 0.5 : 1.0)
+            
             // Animatable geometry effects
                 .transformEffect(CGAffineTransform(translationX: 0, y: isRotating ? 100 : 0))
                 .scaleEffect(isRotating ? CGSize(width: 1.5, height: 1.5) : CGSize(width: 1, height: 1))
-                .rotationEffect(Angle(degrees: isRotating ? 400 : 0))
+                .rotationEffect(Angle(degrees: isRotating ? 1200 : 0))
+            
             // Implicit animation configuration
                 .animation(.easeInOut(duration: 1), value: isRotating)
+            
             Spacer()
+            
             Button(action: rotate, label: { Text("Rotate") })
                 .buttonStyle(.bordered)
+            
             Spacer()
         }
     }

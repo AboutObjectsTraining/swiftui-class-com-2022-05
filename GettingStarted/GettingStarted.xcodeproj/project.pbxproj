@@ -11,6 +11,7 @@
 		B473DEFF253B3F4E00BC1E18 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B473DEFE253B3F4E00BC1E18 /* MyView.swift */; };
 		B473DF01253B3F5000BC1E18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B473DF00253B3F5000BC1E18 /* Assets.xcassets */; };
 		B473DF04253B3F5000BC1E18 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B473DF03253B3F5000BC1E18 /* Preview Assets.xcassets */; };
+		B491EAD92832DAE700D58EA4 /* Capitalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = B491EAD82832DAE700D58EA4 /* Capitalized.swift */; };
 		B49AB30D27F2558D00BE2701 /* MyView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49AB30C27F2558D00BE2701 /* MyView1.swift */; };
 		B49AB30F27F364AA00BE2701 /* NumberedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49AB30E27F364AA00BE2701 /* NumberedList.swift */; };
 		B49AB31127F366CD00BE2701 /* DynamicGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49AB31027F366CD00BE2701 /* DynamicGrid.swift */; };
@@ -66,6 +67,7 @@
 		B473DF00253B3F5000BC1E18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B473DF03253B3F5000BC1E18 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B473DF05253B3F5000BC1E18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B491EAD82832DAE700D58EA4 /* Capitalized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capitalized.swift; sourceTree = "<group>"; };
 		B49AB30C27F2558D00BE2701 /* MyView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView1.swift; sourceTree = "<group>"; };
 		B49AB30E27F364AA00BE2701 /* NumberedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberedList.swift; sourceTree = "<group>"; };
 		B49AB31027F366CD00BE2701 /* DynamicGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicGrid.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				B4C92EF927F611A3007F0116 /* Bindings.swift */,
 				B4C92EFB27F63359007F0116 /* Gestures.swift */,
 				B49AB31627F4BBEC00BE2701 /* Animation.swift */,
+				B491EAD82832DAE700D58EA4 /* Capitalized.swift */,
 				B4C92F0B27F77EE6007F0116 /* PersonViewModel.swift */,
 				B4C92F0D27F782B7007F0116 /* PersonViewModel_2.swift */,
 				B4C92F1D27F7D069007F0116 /* PersonViewModel_3.swift */,
@@ -337,6 +340,7 @@
 				B4C92F1627F7A692007F0116 /* Collections_3.swift in Sources */,
 				B4C92F1427F7A3FB007F0116 /* Collections_2.swift in Sources */,
 				B49AB31B27F509B600BE2701 /* Shapes.swift in Sources */,
+				B491EAD92832DAE700D58EA4 /* Capitalized.swift in Sources */,
 				B4C92F2627F8DC91007F0116 /* Combine.swift in Sources */,
 				B4C92F0827F77A6B007F0116 /* EnvironmentObject.swift in Sources */,
 				B4C92F1027F791AC007F0116 /* Geometry.swift in Sources */,

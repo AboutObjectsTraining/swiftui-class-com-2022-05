@@ -23,20 +23,30 @@ struct ConditionalView: View {
             }
             
             Button(action: toggleWeather,
-                   label: { Text("Toggle") })
+                   label: { Text(isSunny ? "Toggle" : "Change") })
             Spacer()
         }
         .symbolRenderingMode(.multicolor)
         .font(.system(size: 24))
     }
+}
+
+// MARK: - Intents
+extension ConditionalView {
     
     func toggleWeather() {
         isSunny.toggle()
     }
 }
 
+#if DEBUG
 struct ConditionalView_Previews: PreviewProvider {
     static var previews: some View {
-        ConditionalView()
+        Group {
+            ConditionalView()
+            ConditionalView(isSunny: true)
+        }
+        .previewLayout(.fixed(width: 220, height: 220))
     }
 }
+#endif

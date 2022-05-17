@@ -4,7 +4,7 @@
 import SwiftUI
 
 struct HelloView: View {
-    @State var isSayingHello = true
+    @State private var isSayingHello = true
     
     var body: some View {
         HStack {
@@ -14,7 +14,7 @@ struct HelloView: View {
         }
     }
     
-    func toggle() {
+    private func toggle() {
         isSayingHello.toggle()
     }
 }

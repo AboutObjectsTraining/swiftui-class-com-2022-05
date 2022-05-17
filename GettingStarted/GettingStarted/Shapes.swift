@@ -17,7 +17,7 @@ struct Shapes: View {
             Text("Hello World!")
                 .font(.system(size: 24).bold())
                 .frame(width: 140, height: 140)
-                .background(.ultraThinMaterial)
+                .background(.regularMaterial)
         }
     }
 }
