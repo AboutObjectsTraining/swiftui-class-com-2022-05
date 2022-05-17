@@ -5,9 +5,12 @@ import SwiftUI
 
 @main
 struct CoolnessApp: App {
+    @StateObject var viewModel = CoolViewModel(cellsModels: testData)
+    
     var body: some Scene {
         WindowGroup {
             CoolView()
+                .environmentObject(viewModel)
         }
     }
 }

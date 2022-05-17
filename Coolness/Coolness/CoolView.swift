@@ -4,6 +4,8 @@
 import SwiftUI
 
 struct CoolView: View {
+    @EnvironmentObject var viewModel: CoolViewModel
+    
     @State var text = ""
     
     private func clearButtonImage() -> some View {
@@ -39,21 +41,32 @@ struct CoolView: View {
                 .frame(maxWidth: .infinity)
                 .frame(height: 80)
                 .background(.white.opacity(0.5))
-                
-                Rectangle()
-                    .fill(.white.opacity(0.7))
-                    .edgesIgnoringSafeArea(.bottom)
+            
+                CoolViewCellContainer()
             }
         }
     }
 }
 
+#if DEBUG
+//extension CoolView {
+//
+//    static var testView: CoolView {
+//        CoolView()
+//    }
+//}
+
 struct CoolView_Previews: PreviewProvider {
+    
     static var previews: some View {
-        CoolView()
-        CoolView()
-            .previewInterfaceOrientation(.landscapeLeft)
-        CoolView()
-            .preferredColorScheme(.dark)
+        Group {
+            CoolView()
+                .environmentObject(CoolViewModel.testModel)
+//            CoolView.testView
+//                .previewInterfaceOrientation(.landscapeLeft)
+//            CoolView.testView
+//                .preferredColorScheme(.dark)
+        }
     }
 }
+#endif
