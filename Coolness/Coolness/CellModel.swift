@@ -3,7 +3,7 @@
 
 import SwiftUI
 
-struct CellModel: Identifiable {
+struct CellModel: Identifiable, Equatable {
     let id: UUID = UUID()
     let text: String
     let color: Color

@@ -12,13 +12,15 @@ final class CoolViewModel: ObservableObject {
     }
 }
 
-// MARK: - Intents
+// MARK: - Intents (Actions)
 extension CoolViewModel {
     
-    // TODO: Add some intents
-    
+    func bringCellToFront(_ cellModel: CellModel) {
+        guard let index = cellModels.firstIndex(where: { $0 == cellModel }) else { return }
+        cellModels.remove(at: index)
+        cellModels.append(cellModel)
+    }
 }
-
 
 
 #if DEBUG
