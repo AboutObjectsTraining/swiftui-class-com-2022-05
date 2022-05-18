@@ -6,6 +6,7 @@ import Combine
 
 final class CoolViewModel: ObservableObject {
     @Published private(set) var cellModels: [CellModel]
+    @Published var text = ""
     
     init(cellsModels: [CellModel] = []) {
         self.cellModels = cellsModels
@@ -14,6 +15,15 @@ final class CoolViewModel: ObservableObject {
 
 // MARK: - Intents (Actions)
 extension CoolViewModel {
+    
+    func clearTextField() {
+        text = ""
+    }
+    
+    func addCell() {
+        let cellModel = CellModel(text: text, color: .blue, offset: .zero)
+        cellModels.append(cellModel)
+    }
     
     func bringCellToFront(_ cellModel: CellModel) {
         guard let index = cellModels.firstIndex(where: { $0 == cellModel }) else { return }

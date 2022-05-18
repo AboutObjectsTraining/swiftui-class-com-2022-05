@@ -11,6 +11,7 @@
 		B420FC7428340B83006E8D27 /* CoolViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B420FC7328340B83006E8D27 /* CoolViewModel.swift */; };
 		B420FC762834212A006E8D27 /* CoolViewCellContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B420FC752834212A006E8D27 /* CoolViewCellContainer.swift */; };
 		B420FC78283448E6006E8D27 /* CoolViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B420FC77283448E6006E8D27 /* CoolViewCell.swift */; };
+		B420FC7A28345593006E8D27 /* AccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B420FC7928345593006E8D27 /* AccessoryView.swift */; };
 		B491EAE7283312C700D58EA4 /* CoolnessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B491EAE6283312C700D58EA4 /* CoolnessApp.swift */; };
 		B491EAE9283312C700D58EA4 /* CoolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B491EAE8283312C700D58EA4 /* CoolView.swift */; };
 		B491EAEB283312CA00D58EA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B491EAEA283312CA00D58EA4 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 		B420FC7328340B83006E8D27 /* CoolViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolViewModel.swift; sourceTree = "<group>"; };
 		B420FC752834212A006E8D27 /* CoolViewCellContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolViewCellContainer.swift; sourceTree = "<group>"; };
 		B420FC77283448E6006E8D27 /* CoolViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolViewCell.swift; sourceTree = "<group>"; };
+		B420FC7928345593006E8D27 /* AccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryView.swift; sourceTree = "<group>"; };
 		B491EAE3283312C700D58EA4 /* Coolness.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coolness.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B491EAE6283312C700D58EA4 /* CoolnessApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolnessApp.swift; sourceTree = "<group>"; };
 		B491EAE8283312C700D58EA4 /* CoolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolView.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			children = (
 				B491EAE6283312C700D58EA4 /* CoolnessApp.swift */,
 				B491EAE8283312C700D58EA4 /* CoolView.swift */,
+				B420FC7928345593006E8D27 /* AccessoryView.swift */,
 				B420FC752834212A006E8D27 /* CoolViewCellContainer.swift */,
 				B420FC77283448E6006E8D27 /* CoolViewCell.swift */,
 				B420FC7128340AA1006E8D27 /* CellModel.swift */,
@@ -153,6 +156,7 @@
 				B420FC762834212A006E8D27 /* CoolViewCellContainer.swift in Sources */,
 				B491EAE7283312C700D58EA4 /* CoolnessApp.swift in Sources */,
 				B420FC7228340AA1006E8D27 /* CellModel.swift in Sources */,
+				B420FC7A28345593006E8D27 /* AccessoryView.swift in Sources */,
 				B420FC7428340B83006E8D27 /* CoolViewModel.swift in Sources */,
 				B420FC78283448E6006E8D27 /* CoolViewCell.swift in Sources */,
 			);

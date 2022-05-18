@@ -12,7 +12,7 @@ struct CoolViewCellContainer: View {
                 .edgesIgnoringSafeArea(.bottom)
             CoolViewCells()
         }
-        .edgesIgnoringSafeArea(.bottom)
+        .edgesIgnoringSafeArea(.all)
     }
 }
 
@@ -37,6 +37,7 @@ struct CoolViewCellContainer_Previews: PreviewProvider {
     
     static var previews: some View {
         CoolView()
+//            .previewInterfaceOrientation(.landscapeLeft)
             .environmentObject(CoolViewModel.testModel)
     }
 }

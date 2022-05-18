@@ -11,6 +11,8 @@ struct CoolViewCell: View {
     @EnvironmentObject var coolViewModel: CoolViewModel
     let cellModel: CellModel
     
+    @State var isBouncing = false
+    
     @GestureState private var offsetAmount = CGSize.zero
     @State private var currentOffset = CGSize.zero
     @State private var isHighlighted = false
@@ -49,18 +51,70 @@ struct CoolViewCell: View {
         Text(cellModel.text)
             .coolTextStyle(color: .white, background: backgroundColor)
             .offset(offset)
+            .rotationEffect(.degrees(isBouncing ? 90 : 0))
+            .bounceEffect(isBouncing)
             .gesture(dragGesture)
 //            .gesture(tapGesture)
+            .onTapGesture(count: 2, perform: bounce)
             .onTapGesture(count: 1, perform: bringCellToFront)
-            .onTapGesture(count: 2, perform: {})
         // TODO: Animation effect
     }
 }
 
+// MARK: - View modifiers
+extension View {
+    
+    func bounceEffect(_ isBouncing: Bool) -> some View {
+        modifier(BounceEffect(size: isBouncing ? 120 : 0))
+    }
+}
+
+struct BounceEffect: GeometryEffect {
+    var size: CGFloat
+    
+    var animatableData: CGSize.AnimatableData {
+        get { CGSize.AnimatableData(size, size * 2) }
+        set { size = newValue.first }
+    }
+    
+    func effectValue(size: CGSize) -> ProjectionTransform {
+        let translation = CGAffineTransform(translationX: animatableData.first,
+                                            y: animatableData.second)
+        return ProjectionTransform(translation)
+    }
+}
+
+
 // MARK: - Actions
 extension CoolViewCell {
+    
+    private func bounce() {
+        withAnimation(bounceAnimation) {
+            isBouncing = true
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
+            withAnimation(reverseBounceAnimation) {
+                isBouncing = false
+            }
+        }
+    }
+    
     private func bringCellToFront() {
         coolViewModel.bringCellToFront(cellModel)
+    }
+}
+
+// MARK: - Animation
+extension CoolViewCell {
+    private var bounceAnimation: Animation {
+        Animation
+            .easeInOut(duration: 1)
+            .repeatCount(7, autoreverses: true)
+    }
+    
+    private var reverseBounceAnimation: Animation {
+        Animation.easeInOut(duration: 1)
     }
 }
 
