@@ -17,14 +17,17 @@ struct Navigation_2: View {
                 .onDelete { indexSet in
                     delete(at: indexSet)
                 }
+                .onMove { indexSet, toIndex in
+                    
+                }
             }
             .navigationTitle("People")
             .toolbar {
-                ToolbarItem {
-                    EditButton()
-                }
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {}, label: { Image(systemName: "plus.circle") })
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    EditButton()
                 }
             }
         }

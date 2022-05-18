@@ -16,13 +16,13 @@ struct Sheets_2: View {
                     Text("Age: \(viewModel.person.age)")
                 }
             }
+            
+            Button(action: show, label: { Text("Show Sheet") })
+                .buttonStyle(.borderedProminent)
         }
         .sheet(isPresented: $isEditing, onDismiss: update) {
             PersonForm(viewModel: viewModel, isEditing: $isEditing)
         }
-        
-        Button(action: show, label: { Text("Show Sheet") })
-            .buttonStyle(.borderedProminent)
     }
     
     func show() {
