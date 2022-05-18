@@ -24,6 +24,7 @@
 		B420FCE528357101006E8D27 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = B420FCE128357101006E8D27 /* Author.swift */; };
 		B420FCE7283572A5006E8D27 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B420FCE6283572A5006E8D27 /* DataStore.swift */; };
 		B420FCEA283579ED006E8D27 /* ReadingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B420FCE8283579A6006E8D27 /* ReadingListViewModel.swift */; };
+		B420FCEE28359FDC006E8D27 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B420FCEB28359AE5006E8D27 /* APIClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		B420FCE128357101006E8D27 /* Author.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		B420FCE6283572A5006E8D27 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		B420FCE8283579A6006E8D27 /* ReadingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingListViewModel.swift; sourceTree = "<group>"; };
+		B420FCEB28359AE5006E8D27 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				B420FCE6283572A5006E8D27 /* DataStore.swift */,
+				B420FCEB28359AE5006E8D27 /* APIClient.swift */,
 				B420FCE128357101006E8D27 /* Author.swift */,
 				B420FCDE28357101006E8D27 /* Book.swift */,
 				B420FCDF28357101006E8D27 /* ReadingList.json */,
@@ -374,6 +377,7 @@
 				B420FCE528357101006E8D27 /* Author.swift in Sources */,
 				B420FCE428357101006E8D27 /* ReadingList.swift in Sources */,
 				B420FCE7283572A5006E8D27 /* DataStore.swift in Sources */,
+				B420FCEE28359FDC006E8D27 /* APIClient.swift in Sources */,
 				B420FCE228357101006E8D27 /* Book.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

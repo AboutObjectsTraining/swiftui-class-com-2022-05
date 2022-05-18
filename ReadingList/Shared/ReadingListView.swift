@@ -11,13 +11,14 @@ struct ReadingListView: View {
             Rectangle()
                 .fill(.tertiary).opacity(0.5)
             Text("There currently aren't any books in this reading list.")
-                .navigationTitle("My Reading List")
+                .navigationTitle("Reading List")
                 .font(.title2.italic())
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
                 .padding()
-                .padding(.top, 120)
+                .padding(.top, 180)
         }
+        .edgesIgnoringSafeArea(.bottom)
     }
     
     private var listView: some View {
@@ -30,13 +31,17 @@ struct ReadingListView: View {
     var body: some View {
         NavigationView {
             // TODO: Make isEmpty a publisher
-            if viewModel.readingList.books.isEmpty {
+            if viewModel.isEmpty {
                 emptyView
             } else {
                 listView
             }
         }
         .onAppear(perform: loadReadingList)
+        .alert("Unable to load reading list.",
+               isPresented: $viewModel.loadFailed) {
+            Button("Okay", role: .cancel, action: {})
+        }
     }
 }
 
