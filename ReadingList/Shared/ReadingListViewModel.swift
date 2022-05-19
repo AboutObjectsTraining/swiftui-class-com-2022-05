@@ -26,20 +26,33 @@ final class ReadingListViewModel: ObservableObject {
                 self?.isEmpty = readingList.isEmpty
             }
             .store(in: &subscriptions)
-
+        
     }
 }
 
 // MARK: - Intents
 extension ReadingListViewModel {
     
-    func loadReadingListIfEmpty() {
+    func loadReadingListIfEmpty() async {
         if readingList.isEmpty {
             loadFailed = false
             do {
-                readingList = try dataStore.fetch()
+                readingList = try await dataStore.fetch()
             } catch {
                 loadFailed = true
+            }
+        }
+    }
+    
+    func loadReadingListIfEmpty() {
+        Task {
+            if readingList.isEmpty {
+                loadFailed = false
+                do {
+                    readingList = try await dataStore.fetch()
+                } catch {
+                    loadFailed = true
+                }
             }
         }
     }

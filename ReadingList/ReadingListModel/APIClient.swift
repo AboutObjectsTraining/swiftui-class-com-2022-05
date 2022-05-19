@@ -1,31 +1,25 @@
 // Copyright (C) 2022 About Objects, Inc. All Rights Reserved.
 // See LICENSE.txt for this project's licensing information.
 
-import Foundation
-import Combine
+extension String: Error { }
 
-public class APIClient {
+struct APIClient {
     
-    var subscription: AnyCancellable?
-    
-    public func fetchReadingList(from url: URL, handler: @escaping (ReadingList) -> Void) {
-        subscription = readingListPublisher(from: url)
-            .sink { status in
-                print(status)
-            } receiveValue: { readingList in
-                handler(readingList)
-            }
-    }
-    
-    public func readingListPublisher(from url: URL) -> AnyPublisher<ReadingList, Never> {
+    public static func fetchData(from url: URL) async throws -> Data {
+        let (data, _) = try await URLSession.shared.data(from: url)
         
-        URLSession.shared
-            .dataTaskPublisher(for: url)
-            .map { data, _ in
-                data
-            }
-            .decode(type: ReadingList.self, decoder: JSONDecoder())
-            .replaceError(with: ReadingList())
-            .eraseToAnyPublisher()
+        return data
     }
+    
+    public static func fetchReadingList(from url: URL) async throws -> ReadingList {
+        let data = try await fetchData(from: url)
+        
+        guard let readingList = try? JSONDecoder().decode(ReadingList.self, from: data) else {
+            throw "Unable to decode reading list."
+        }
+        
+        return readingList
+    }
+    
 }
+

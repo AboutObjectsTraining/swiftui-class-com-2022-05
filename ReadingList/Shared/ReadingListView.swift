@@ -23,7 +23,7 @@ struct ReadingListView: View {
     
     private var listView: some View {
         List(viewModel.readingList.books) { book in
-            Text(book.title)
+            ReadingListCell(book: book)
         }
         .navigationTitle(viewModel.readingList.title)
     }
@@ -37,6 +37,7 @@ struct ReadingListView: View {
                 listView
             }
         }
+//        .task { await loadReadingList() }
         .onAppear(perform: loadReadingList)
         .alert("Unable to load reading list.",
                isPresented: $viewModel.loadFailed) {
@@ -51,6 +52,10 @@ extension ReadingListView {
     private func loadReadingList() {
         viewModel.loadReadingListIfEmpty()
     }
+    
+//    private func loadReadingList() async {
+//        await viewModel.loadReadingListIfEmpty()
+//    }
 }
 
 struct ReadingListView_Previews: PreviewProvider {

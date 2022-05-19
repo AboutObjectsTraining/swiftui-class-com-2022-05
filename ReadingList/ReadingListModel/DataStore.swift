@@ -2,7 +2,7 @@
 // See LICENSE.txt for this project's licensing information.
 
 public final class DataStore {
-    private let apiClient = APIClient()
+    private let combineAPIClient = CombineAPIClient()
     
     public static let defaultFileName = "ReadingList"
     public static let fileExtension = "json"
@@ -28,14 +28,18 @@ public final class DataStore {
 
 // MARK: - Persistence operations
 extension DataStore {
+    
+    public func fetch() async throws -> ReadingList {
+        return try await APIClient.fetchReadingList(from: templateFileURL)
+    }
+    
     public func fetch() throws -> ReadingList {
-        // FIXME: Use a data task to retrieve
         let data = try Data(contentsOf: templateFileURL)
         return try decoder.decode(ReadingList.self, from: data)
     }
     
     public func fetchWithCombine(_ handler: @escaping (ReadingList) -> Void) throws {
-        apiClient.fetchReadingList(from: templateFileURL) { readingList in
+        combineAPIClient.fetchReadingList(from: templateFileURL) { readingList in
             handler(readingList)
         }
     }
