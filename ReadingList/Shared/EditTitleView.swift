@@ -3,7 +3,7 @@
 
 import SwiftUI
 
-let useRealTextField = true
+let useRealTextField = false
 
 struct EditTitleView: View {
     @ObservedObject var viewModel: ReadingListViewModel
