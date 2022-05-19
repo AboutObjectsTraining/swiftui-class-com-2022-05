@@ -26,6 +26,10 @@ struct ReadingListView: View {
             ReadingListCell(book: book)
         }
         .navigationTitle(viewModel.readingList.title)
+        .toolbar {
+            Button(action: editTitle,
+                   label: { Image(systemName: "square.and.pencil") })
+        }
     }
     
     var body: some View {
@@ -37,8 +41,12 @@ struct ReadingListView: View {
                 listView
             }
         }
-//        .task { await loadReadingList() }
-        .onAppear(perform: loadReadingList)
+        .task { await loadReadingList() }
+//        .onAppear(perform: loadReadingList)
+        .fullScreenCover(isPresented: $viewModel.isEditingTitle,
+                         content: { EditTitleView(viewModel: viewModel) })
+//        .sheet(isPresented: $viewModel.isEditingTitle,
+//               content: { EditTitleView(viewModel: viewModel) })
         .alert("Unable to load reading list.",
                isPresented: $viewModel.loadFailed) {
             Button("Okay", role: .cancel, action: {})
@@ -49,13 +57,17 @@ struct ReadingListView: View {
 // MARK: - Actions
 extension ReadingListView {
     
-    private func loadReadingList() {
-        viewModel.loadReadingListIfEmpty()
+    private func editTitle() {
+        viewModel.isEditingTitle = true
     }
     
-//    private func loadReadingList() async {
-//        await viewModel.loadReadingListIfEmpty()
+//    private func loadReadingList() {
+//        viewModel.loadReadingListIfEmpty()
 //    }
+    
+    private func loadReadingList() async {
+        await viewModel.loadReadingListIfEmpty()
+    }
 }
 
 struct ReadingListView_Previews: PreviewProvider {

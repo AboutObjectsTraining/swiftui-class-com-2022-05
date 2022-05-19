@@ -27,6 +27,9 @@
 		B420FCEE28359FDC006E8D27 /* CombineAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B420FCEB28359AE5006E8D27 /* CombineAPIClient.swift */; };
 		B420FCF02835AB2B006E8D27 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B420FCEF2835AB2B006E8D27 /* APIClient.swift */; };
 		B420FCF32835BB53006E8D27 /* ReadingListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B420FCF12835BAFE006E8D27 /* ReadingListCell.swift */; };
+		B420FCF62836AB81006E8D27 /* EditTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B420FCF42836AAE3006E8D27 /* EditTitleView.swift */; };
+		B420FCFB2836D26C006E8D27 /* TextFieldWithClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B420FCF92836D206006E8D27 /* TextFieldWithClearButton.swift */; };
+		B420FCFC2836D2BF006E8D27 /* RealTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B420FCF72836C9A0006E8D27 /* RealTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +90,9 @@
 		B420FCEB28359AE5006E8D27 /* CombineAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineAPIClient.swift; sourceTree = "<group>"; };
 		B420FCEF2835AB2B006E8D27 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		B420FCF12835BAFE006E8D27 /* ReadingListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingListCell.swift; sourceTree = "<group>"; };
+		B420FCF42836AAE3006E8D27 /* EditTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTitleView.swift; sourceTree = "<group>"; };
+		B420FCF72836C9A0006E8D27 /* RealTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTextField.swift; sourceTree = "<group>"; };
+		B420FCF92836D206006E8D27 /* TextFieldWithClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithClearButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +156,9 @@
 			children = (
 				B420FC9828356421006E8D27 /* ReadingList_MultiApp.swift */,
 				B420FC9528356350006E8D27 /* ReadingListView.swift */,
+				B420FCF42836AAE3006E8D27 /* EditTitleView.swift */,
+				B420FCF92836D206006E8D27 /* TextFieldWithClearButton.swift */,
+				B420FCF72836C9A0006E8D27 /* RealTextField.swift */,
 				B420FCF12835BAFE006E8D27 /* ReadingListCell.swift */,
 				B420FCE8283579A6006E8D27 /* ReadingListViewModel.swift */,
 				B420FC9A28356422006E8D27 /* Assets.xcassets */,
@@ -362,7 +371,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B420FCB328356502006E8D27 /* ReadingListView.swift in Sources */,
+				B420FCFC2836D2BF006E8D27 /* RealTextField.swift in Sources */,
 				B420FCEA283579ED006E8D27 /* ReadingListViewModel.swift in Sources */,
+				B420FCF62836AB81006E8D27 /* EditTitleView.swift in Sources */,
+				B420FCFB2836D26C006E8D27 /* TextFieldWithClearButton.swift in Sources */,
 				B420FCF32835BB53006E8D27 /* ReadingListCell.swift in Sources */,
 				B420FCA728356422006E8D27 /* ReadingList_MultiApp.swift in Sources */,
 			);

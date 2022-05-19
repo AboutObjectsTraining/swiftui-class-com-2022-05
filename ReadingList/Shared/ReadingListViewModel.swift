@@ -11,6 +11,7 @@ final class ReadingListViewModel: ObservableObject {
     @Published var readingList = ReadingList()
     @Published var isEmpty = true
     @Published var loadFailed = false
+    @Published var isEditingTitle = false
     
     private var subscriptions: Set<AnyCancellable> = []
     
@@ -20,7 +21,7 @@ final class ReadingListViewModel: ObservableObject {
         configurePublishers()
     }
     
-    private func configurePublishers() {
+     private func configurePublishers() {
         $readingList
             .sink { [weak self] readingList in
                 self?.isEmpty = readingList.isEmpty
@@ -33,7 +34,16 @@ final class ReadingListViewModel: ObservableObject {
 // MARK: - Intents
 extension ReadingListViewModel {
     
-    func loadReadingListIfEmpty() async {
+    func finishedEditingTitle(_ title: String) {
+        readingList.title = title
+        isEditingTitle = false
+    }
+    
+    func cancelEditingTitle() {
+        isEditingTitle = false
+    }
+    
+    @MainActor func loadReadingListIfEmpty() async {
         if readingList.isEmpty {
             loadFailed = false
             do {
@@ -44,16 +54,16 @@ extension ReadingListViewModel {
         }
     }
     
-    func loadReadingListIfEmpty() {
-        Task {
-            if readingList.isEmpty {
-                loadFailed = false
-                do {
-                    readingList = try await dataStore.fetch()
-                } catch {
-                    loadFailed = true
-                }
-            }
-        }
-    }
+//    func loadReadingListIfEmpty() {
+//        Task {
+//            if readingList.isEmpty {
+//                loadFailed = false
+//                do {
+//                    readingList = try await dataStore.fetch()
+//                } catch {
+//                    loadFailed = true
+//                }
+//            }
+//        }
+//    }
 }
