@@ -4,13 +4,16 @@
 import SwiftUI
 
 struct TextFieldWithClearButton: View {
+    let placeholder: String
+    let isDisabled: Bool
     @Binding var text: String
     @FocusState private var isFocused: Bool
     
     var body: some View {
         HStack {
-            TextField("Reading list title...", text: $text)
+            TextField(placeholder, text: $text)
                 .focused($isFocused)
+                .disabled(isDisabled)
             
             if isFocused, !text.isEmpty {
                 Button(action: clear, label: { Image(systemName: "xmark.circle.fill") })
@@ -18,6 +21,12 @@ struct TextFieldWithClearButton: View {
                     .foregroundColor(.secondary)
             }
         }
+    }
+    
+    init(_ placeholder: String = "", text: Binding<String>, disabled: Bool = false) {
+        self.placeholder = placeholder
+        _text = text
+        isDisabled = disabled
     }
     
     // Actions
@@ -29,7 +38,8 @@ struct TextFieldWithClearButton: View {
 struct TextFieldWithClearButton_Previews: PreviewProvider {
     static var previews: some View {
         Form {
-            TextFieldWithClearButton(text: .constant("Hello"))
+            TextFieldWithClearButton(text: .constant("Hello"), disabled: false)
+            TextFieldWithClearButton(text: .constant("Bye"), disabled: true)
         }
     }
 }

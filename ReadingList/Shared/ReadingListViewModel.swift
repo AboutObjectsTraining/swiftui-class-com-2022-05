@@ -77,3 +77,18 @@ extension Book {
         return URL(fileURLWithPath: path)
     }
 }
+
+
+#if DEBUG
+extension ReadingListViewModel {
+    static var testBookWithoutCover = Book(title: "My Book",
+                                           year: 1999,
+                                           author: Author(firstName: "Fred",
+                                                          lastName: "Smith"))
+
+    static var testBookWithCover = Book(title: "Julius Caesar",
+                                           year: 1999,
+                                           author: Author(firstName: "William",
+                                                          lastName: "Shakespeare"))
+}
+#endif

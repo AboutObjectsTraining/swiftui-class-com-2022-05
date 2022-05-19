@@ -31,7 +31,8 @@ struct ReadingListCell: View {
             
             NavigationLink("") {
                 // TODO: Implement detail view
-                Text(book.title)
+                BookDetail(book: book)
+//                Text(book.title)
                     .navigationTitle("Book Detail")
             }
         }
@@ -72,13 +73,17 @@ struct ThumbnailImage: View {
 }
 
 struct ReadingListCell_Previews: PreviewProvider {
-    static var book = Book(title: "My Book",
-                           year: 1999,
-                           author: Author(firstName: "Fred",
-                                          lastName: "Smith"))
+//    static var book = Book(title: "My Book",
+//                           year: 1999,
+//                           author: Author(firstName: "Fred",
+//                                          lastName: "Smith"))
     static var previews: some View {
-        ReadingListCell(book: book)
-            .previewLayout(.fixed(width: 400, height: 80))
+        Group {
+            ReadingListCell(book: ReadingListViewModel.testBookWithCover)
+            ReadingListCell(book: ReadingListViewModel.testBookWithoutCover)
+        }
+        .previewLayout(.fixed(width: 400, height: 80))
+
         
         ReadingListView()
         ReadingListView()
