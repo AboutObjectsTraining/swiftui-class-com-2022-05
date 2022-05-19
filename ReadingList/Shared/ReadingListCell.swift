@@ -23,7 +23,9 @@ struct ReadingListCell: View {
     }
     
     var body: some View {
-        HStack {
+        HStack(spacing: 18) {
+            ThumbnailImage(url: book.artworkUrl)
+            
             overview
                 .layoutPriority(1)
             
@@ -31,6 +33,39 @@ struct ReadingListCell: View {
                 // TODO: Implement detail view
                 Text(book.title)
                     .navigationTitle("Book Detail")
+            }
+        }
+        .listRowBackground(Color.brown.opacity(0.1))
+    }
+}
+
+struct ThumbnailImage: View {
+    @Environment(\.colorScheme) var colorScheme
+    let url: URL
+    
+    private var missingArtworkImage: some View {
+        ZStack {
+            Color.red
+                .frame(width: 45, height: 72)
+            Image(systemName: "photo.circle")
+                .imageScale(.large)
+                .font(.system(size: 24))
+                .foregroundColor(.white)
+        }
+    }
+    
+    var body: some View {
+        AsyncImage(url: url) { phase in
+            if let image = phase.image {
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 72)
+                    .shadow(color: colorScheme == .dark ? .clear : .secondary, radius: 3, x: 0, y: 2)
+            } else if phase.error == nil {
+                ProgressView()
+            } else {
+                missingArtworkImage
             }
         }
     }
@@ -43,8 +78,12 @@ struct ReadingListCell_Previews: PreviewProvider {
                                           lastName: "Smith"))
     static var previews: some View {
         ReadingListCell(book: book)
-            .previewLayout(.sizeThatFits)
+            .previewLayout(.fixed(width: 400, height: 80))
         
         ReadingListView()
+        ReadingListView()
+            .preferredColorScheme(.dark)
+        ReadingListView()
+            .previewInterfaceOrientation(.landscapeLeft)
     }
 }

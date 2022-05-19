@@ -67,3 +67,13 @@ extension ReadingListViewModel {
 //        }
 //    }
 }
+
+
+extension Book {
+    
+    var artworkUrl: URL {
+        let title = title.trimmingCharacters(in: .whitespaces)
+        let path = Bundle.main.path(forResource: title, ofType: "jpg") ?? ""
+        return URL(fileURLWithPath: path)
+    }
+}
