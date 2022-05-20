@@ -4,7 +4,7 @@
 public struct ReadingList: Codable, Identifiable {
     public let id: UUID
     public var title: String
-    public private(set) var books: [Book]
+    public var books: [Book]
     
     public init(id: UUID = UUID(), title: String = "Empty", books: [Book] = []) {
         self.id = id

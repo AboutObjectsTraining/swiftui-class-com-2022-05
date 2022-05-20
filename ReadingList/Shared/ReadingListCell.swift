@@ -5,6 +5,7 @@ import SwiftUI
 import ReadingListModel
 
 struct ReadingListCell: View {
+    @EnvironmentObject var viewModel: ReadingListViewModel
     let book: Book
     
     private var overview: some View {
@@ -32,6 +33,7 @@ struct ReadingListCell: View {
             NavigationLink("") {
                 // TODO: Implement detail view
                 BookDetail(book: book)
+                    .environmentObject(viewModel)
 //                Text(book.title)
                     .navigationTitle("Book Detail")
             }

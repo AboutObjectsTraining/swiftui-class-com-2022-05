@@ -24,7 +24,9 @@ struct ReadingListView: View {
     private var listView: some View {
         List(viewModel.readingList.books) { book in
             ReadingListCell(book: book)
+                .environmentObject(viewModel)
         }
+        .listStyle(.grouped)
         .navigationTitle(viewModel.readingList.title)
         .toolbar {
             Button(action: editTitle,
@@ -42,11 +44,11 @@ struct ReadingListView: View {
             }
         }
         .task { await loadReadingList() }
-//        .onAppear(perform: loadReadingList)
+        //        .onAppear(perform: loadReadingList)
         .fullScreenCover(isPresented: $viewModel.isEditingTitle,
                          content: { EditTitleView(viewModel: viewModel) })
-//        .sheet(isPresented: $viewModel.isEditingTitle,
-//               content: { EditTitleView(viewModel: viewModel) })
+        //        .sheet(isPresented: $viewModel.isEditingTitle,
+        //               content: { EditTitleView(viewModel: viewModel) })
         .alert("Unable to load reading list.",
                isPresented: $viewModel.loadFailed) {
             Button("Okay", role: .cancel, action: {})
@@ -61,22 +63,24 @@ extension ReadingListView {
         viewModel.isEditingTitle = true
     }
     
-//    private func loadReadingList() {
-//        viewModel.loadReadingListIfEmpty()
-//    }
+    //    private func loadReadingList() {
+    //        viewModel.loadReadingListIfEmpty()
+    //    }
     
     private func loadReadingList() async {
         await viewModel.loadReadingListIfEmpty()
     }
 }
 
+#if DEBUG
 struct ReadingListView_Previews: PreviewProvider {
     static var previews: some View {
-        ReadingListView()
-        ReadingListView()
+        ReadingListView(viewModel: .preloaded)
+        ReadingListView(viewModel: .preloaded)
             .preferredColorScheme(.dark)
-        ReadingListView()
-            .environment(\.sizeCategory, .accessibilityExtraExtraLarge)
-
+        ReadingListView(viewModel: .preloaded)
+            .environment(\.sizeCategory, .accessibilityLarge)
+        
     }
 }
+#endif

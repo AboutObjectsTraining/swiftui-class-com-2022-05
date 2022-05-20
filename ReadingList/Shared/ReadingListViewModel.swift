@@ -27,12 +27,16 @@ final class ReadingListViewModel: ObservableObject {
                 self?.isEmpty = readingList.isEmpty
             }
             .store(in: &subscriptions)
-        
     }
 }
 
 // MARK: - Intents
 extension ReadingListViewModel {
+        
+    func updateBook(_ book: Book) {
+        guard let index = readingList.books.firstIndex(where: { $0.id == book.id }) else { return }
+        readingList.books[index] = book
+    }
     
     func finishedEditingTitle(_ title: String) {
         readingList.title = title
@@ -68,7 +72,6 @@ extension ReadingListViewModel {
 //    }
 }
 
-
 extension Book {
     
     var artworkUrl: URL {
@@ -81,6 +84,13 @@ extension Book {
 
 #if DEBUG
 extension ReadingListViewModel {
+    
+    static var preloaded: ReadingListViewModel = {
+        let viewModel = ReadingListViewModel()
+        viewModel.readingList = try! viewModel.dataStore.fetch()
+        return viewModel
+    }()
+
     static var testBookWithoutCover = Book(title: "My Book",
                                            year: 1999,
                                            author: Author(firstName: "Fred",

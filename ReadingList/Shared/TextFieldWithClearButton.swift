@@ -5,7 +5,7 @@ import SwiftUI
 
 struct TextFieldWithClearButton: View {
     let placeholder: String
-    let isDisabled: Bool
+    @State var isDisabled = false
     @Binding var text: String
     @FocusState private var isFocused: Bool
     
@@ -32,6 +32,12 @@ struct TextFieldWithClearButton: View {
     // Actions
     private func clear() {
         text = ""
+    }
+    
+    // Modifiers
+    func disabled(_ disabled: Bool) -> some View {
+        isDisabled = disabled
+        return self
     }
 }
 

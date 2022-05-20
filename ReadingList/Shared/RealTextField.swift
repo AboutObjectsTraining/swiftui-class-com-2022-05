@@ -52,6 +52,8 @@ struct RealTextField: UIViewRepresentable {
     // Set properties of the text field to sync with state of this View
     func updateUIView(_ uiView: UITextField, context: Context) {
         uiView.text = text
+//        uiView.selectedTextRange = textField.textRange(from: range.location,
+//                                                       to: range.location)
 //        uiView.range = range
 //        uiView.placeholder = "Hello"
     }
