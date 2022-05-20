@@ -71,6 +71,11 @@ extension ReadingListViewModel {
 
 extension Book {
     
+    var formattedYear: String {
+        get { year.description }
+        set { year = Int(newValue) ?? 0 }
+    }
+    
     var artworkUrl: URL {
         let title = title.trimmingCharacters(in: .whitespaces)
         let path = Bundle.main.path(forResource: title, ofType: "jpg") ?? ""
@@ -81,6 +86,13 @@ extension Book {
 
 #if DEBUG
 extension ReadingListViewModel {
+    
+    static var preloaded: ReadingListViewModel {
+        let viewModel = ReadingListViewModel()
+        viewModel.readingList = try! viewModel.dataStore.fetch()
+        return viewModel
+    }
+    
     static var testBookWithoutCover = Book(title: "My Book",
                                            year: 1999,
                                            author: Author(firstName: "Fred",

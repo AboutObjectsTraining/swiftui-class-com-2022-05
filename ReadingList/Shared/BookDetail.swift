@@ -20,26 +20,20 @@ struct BookDetail: View {
     
     @FocusState var focusedField: ActiveField?
     
-    let book: Book
-    
-    @State var title = ""
-    @State var year = ""
-    @State var first = ""
-    @State var last = ""
-    
-    
+    @State var book: Book
+        
     var body: some View {
         Form {
             Section("Book") {
-                TextFieldWithClearButton("The Tempest", text: $title, disabled: !isEditing)
+                TextFieldWithClearButton("The Tempest", text: $book.title, disabled: !isEditing)
                     .focused($focusedField, equals: .title)
-                TextFieldWithClearButton("1999", text: $year, disabled: !isEditing)
+                TextFieldWithClearButton("1999", text: $book.formattedYear, disabled: !isEditing)
                     .focused($focusedField, equals: .year)
             }
             Section("Author") {
-                TextFieldWithClearButton("William", text: $first, disabled: !isEditing)
+                TextFieldWithClearButton("William", text: $book.author.firstName, disabled: !isEditing)
                     .focused($focusedField, equals: .first)
-                TextFieldWithClearButton("Shakespeare", text: $last, disabled: !isEditing)
+                TextFieldWithClearButton("Shakespeare", text: $book.author.lastName, disabled: !isEditing)
                     .focused($focusedField, equals: .last)
             }
         }
@@ -49,12 +43,6 @@ struct BookDetail: View {
                     focusedField = .title
                 }
         }
-        .onAppear() {
-            title = book.title
-            year = book.year.description
-            first = book.author.firstName
-            last = book.author.lastName
-        }
     }
 }
 
@@ -62,7 +50,8 @@ struct BookDetail: View {
 struct BookDetail_Previews: PreviewProvider {
     static var previews: some View {
         BookDetail(book: ReadingListViewModel.testBookWithCover)
-        ReadingListView(viewModel: ReadingListViewModel())
+        
+        ReadingListView(viewModel: .preloaded)
     }
 }
 #endif

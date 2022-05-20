@@ -25,6 +25,7 @@ struct ReadingListView: View {
         List(viewModel.readingList.books) { book in
             ReadingListCell(book: book)
         }
+        .listStyle(.grouped)
         .navigationTitle(viewModel.readingList.title)
         .toolbar {
             Button(action: editTitle,
@@ -72,10 +73,10 @@ extension ReadingListView {
 
 struct ReadingListView_Previews: PreviewProvider {
     static var previews: some View {
-        ReadingListView()
-        ReadingListView()
+        ReadingListView(viewModel: .preloaded)
+        ReadingListView(viewModel: .preloaded)
             .preferredColorScheme(.dark)
-        ReadingListView()
+        ReadingListView(viewModel: .preloaded)
             .environment(\.sizeCategory, .accessibilityExtraExtraLarge)
 
     }
